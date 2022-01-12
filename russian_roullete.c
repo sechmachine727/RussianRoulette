@@ -24,6 +24,7 @@ void multi_play()                                          //multi_play function
     printf("Type in the number %d player's name: ", i+1);
     scanf("%s",&player_name[i]) ;  
   }
+  mpstart:
   int randomNum = rand() % 6;                             //ran number created is from 0 to 5(6 in total)
       
       //printf("The radnum is: %d\n", randomNum);                //check code for dev only
@@ -44,6 +45,17 @@ void multi_play()                                          //multi_play function
         if (i - 1 == randomNum)
         {
           printf("\tYOU DIED\n\t-------- \n\n Player %s has been eliminated!\n The others players wins\n", player_name[eliminated_player]);
+          printf("\nEnter 1 to continue, any other number to return to main menu: ");    
+              int again;
+              scanf("%d", &again);
+            
+              switch (again)
+              {
+                case 1: goto mpstart;
+                default: printf("\nGG\n\n"); break;
+              
+              }
+              
           break;                                              //basicly the whole function
         }
         printf("Still alive eh? \n");
@@ -122,7 +134,6 @@ int main()
     }
   }
   while(input!=0);
-  
   return 0;
 
 }
