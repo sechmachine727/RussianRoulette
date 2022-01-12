@@ -1,5 +1,5 @@
 # RussianRoulette
-Just a fun and messy recreation of Russian Roulette. Only braincells are harmed when creating this
+Just a fun and messy recreation of Russian Roulette. Only braincells were harmed when making this
 # Changelog
 V2.0:
 
