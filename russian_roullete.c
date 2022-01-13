@@ -1,6 +1,6 @@
 /****************************************************************
 (▀̿Ĺ̯▀̿ ̿)
-Referring code made by SFMSupersanta and my friend Arcahv
+Referring code made by SFMSupersanta, my friend Arcahv and SonBEO1907
 Program:RUSSIAN ROULETTE THE GAME
 version 2.1
 ****************************************************************/
@@ -16,17 +16,24 @@ void multi_play()                                          //multi_play function
   printf("2 players: type 2 \t\t3 players: type 3 \t\t4 players: type 4 \t\t5 players: type 5 \n");
 
   printf("Your choice: ");                 //number of players (1)
-  int randomNum;
-  int players ;                            //for (1)
-  scanf("%d", &players) ;
 
+  int randomNum;
+  int players;
   char player_name[4][255];
-  
+
+  PPRESET:scanf("%d", &players) ;
+if (players<=5)                         //enter player's name 
+  { 
   for(int i = 0; i < players; i++)
   {
     printf("Type in the number %d player's name: ", i+1);
     scanf("%s",&player_name[i]) ;  
   }
+  } else 
+    {
+        printf("No more than 5 people allowed, please enter a valid number if you want to take the challenge:\n"); goto PPRESET; // go to PPRESET if fetched invalid value
+    }  
+
   int again=1;                                           // initialize the value to start the game
   while(again == 1)
   {
@@ -82,6 +89,9 @@ void play_single()                                        //single-play function
 {
   int randomNum = rand() % 6;                             //ran number created is from 0 to 5(6 in total)
      // printf("The radnum is: %d\n", randomNum);                //check code for dev only
+    int reset=1;
+    while (reset==1)
+    {  
       for(int i = 1; i <= 6; i++) 
       {
         printf(" Turn %d \nPress ENTER to test your lucks!\n", i);
@@ -91,14 +101,23 @@ void play_single()                                        //single-play function
         {
           printf("\tYOU DIED\n\t-------- \n\nYou have survied %d times this day!", i);
 
-          if(i <= 5) printf("your luck sucks, go do sth good then try again\n");
-
-          else if(i > 5) printf("CONGRATULATIONS, YOU WON.");
-
+          if(i <= 5) 
+              {
+              printf("your luck sucks, go do sth good then try again\n");
+              printf("\nEnter 1 to continue, any other number to return to main menu: ");
+              scanf("%d",&reset);
+              }  
+          else if(i > 5)
+              { 
+              printf("CONGRATULATIONS, YOU WON.");
+              printf("\nEnter 1 to continue, any other number to return to main menu: ");
+              scanf("%d",&reset);
+              }
           break;                                              //basicly the whole function
         }
         printf("Still alive eh? \n");
       }
+    }
 }
 
 void russianroulette()
@@ -155,7 +174,7 @@ int main()
 //(1/13/2022)mm/dd//yyyy
 //last editor: SFMSupersanta (Arcahv)
 /*
-Todo: -Add retry to single-player funtion
+Todo: -Add retry to single-player function
       -And more lines to print when player is alive
 DONE: -Fix multiplayer funtion where there is 2 players
       -Multiplayer loop. Entering names each play is annoying as fuck

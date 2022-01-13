@@ -8,3 +8,8 @@ V2.0:
 V2.1: 
 
 -Added option to retry in mp
+
+V2.2:
+
+- Unlimited players fixed.
+- Added option to retry in single_player.
