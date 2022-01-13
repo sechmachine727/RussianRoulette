@@ -18,10 +18,12 @@ void multi_play()                                          //multi_play function
   printf("Your choice: ");                 //number of players (1)
 
   int randomNum;
-  int players;
+  int players =1;
   char player_name[4][255];
 
-  PPRESET:scanf("%d", &players) ;
+while (players==1)
+{
+scanf("%d", &players) ;
 if (players<=5)                         //enter player's name 
   { 
   for(int i = 0; i < players; i++)
@@ -31,9 +33,10 @@ if (players<=5)                         //enter player's name
   }
   } else 
     {
-        printf("No more than 5 people allowed, please enter a valid number if you want to take the challenge:\n"); goto PPRESET; // go to PPRESET if fetched invalid value
+        printf("No more than 5 people allowed, please enter a valid number if you want to take the challenge:\n");
+        players=1;
     }  
-
+}
   int again=1;                                           // initialize the value to start the game
   while(again == 1)
   {
