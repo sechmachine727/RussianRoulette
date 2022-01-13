@@ -1,7 +1,10 @@
-//(▀̿Ĺ̯▀̿ ̿)
-//Referring code made by SFMSupersanta and my friend Arcahv
-//Program:RUSSIAN ROULETTE THE GAME
-//version 2.1
+/****************************************************************
+(▀̿Ĺ̯▀̿ ̿)
+Referring code made by SFMSupersanta and my friend Arcahv
+Program:RUSSIAN ROULETTE THE GAME
+version 2.1
+****************************************************************/
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
@@ -47,7 +50,9 @@ void multi_play()                                          //multi_play function
         {
           printf("\tYOU DIED\n\t-------- \n\n Player %s has been eliminated!\n The others players wins\n", player_name[eliminated_player]);
           printf("\nEnter 1 to continue, any other number to return to main menu: ");
-          scanf("%d", &again);    
+          scanf("%d", &again);  
+                      
+          break;  
             /********************************  
               int again;
               scanf("%d", &again);
@@ -62,11 +67,12 @@ void multi_play()                                          //multi_play function
                 break;
               
               }
-            ********************************/
-          if(again != 1)     
-            break;                                              //basicly the whole function
+            ********************************/                                           
         }
+
+            
         printf("Still alive eh? \n");
+         
       }
   }
 
@@ -124,7 +130,7 @@ int main()
   
   do                                                    //do-while loop
   {
-    printf("\n\n\t--------------------------------------------------------\n\tEnter 1 to try your luck, Enter 0 if you are a wimp: ");
+    printf("\n\n\t----------------------------------------------------\n\tEnter 1 to try your luck, Enter 0 if you are a wimp: ");
     scanf("%d", &input);
     printf("\n\n");
 
@@ -150,8 +156,8 @@ int main()
 //last editor: SFMSupersanta (Arcahv)
 /*
 Todo: -Add retry to single-player funtion
-      -Fix multiplayer funtion where there is 2 players
       -And more lines to print when player is alive
+DONE: -Fix multiplayer funtion where there is 2 players
       -Multiplayer loop. Entering names each play is annoying as fuck
 Changelog: makes code a bit easier to read
 */
