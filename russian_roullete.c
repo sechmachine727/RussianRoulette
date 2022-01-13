@@ -33,7 +33,7 @@ if (players<=5)                         //enter player's name
   }
   } else 
     {
-        printf("No more than 5 people allowed, please enter a valid number if you want to take the challenge:\n");
+        printf("No more than 5 people allowed, please enter a valid number if you want to take the challenge:\nYour choice: ");
         players=1;
     }  
 }
