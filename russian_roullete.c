@@ -32,7 +32,7 @@ void multi_play()                                          //multi_play function
   {
   //mpstart:
   randomNum = rand() % 6;                             //ran number created is from 0 to 5(6 in total)    
-      printf("The radnum is: %d\n", randomNum);                //check code for dev only 
+      //printf("The radnum is: %d\n", randomNum);                //check code for dev only 
       int temp_player = 0;                                        //variable for displaying player's name
       int eliminated_player;                                    //variable for eliminated player
 
