@@ -1,7 +1,7 @@
 //(▀̿Ĺ̯▀̿ ̿)
-//Referring code made by supersanta
+//Referring code made by SFMSupersanta and my friend Arcahv
 //Program:RUSSIAN ROULETTE THE GAME
-//version 2.0
+//version 2.1
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
@@ -13,7 +13,7 @@ void multi_play()                                          //multi_play function
   printf("2 players: type 2 \t\t3 players: type 3 \t\t4 players: type 4 \t\t5 players: type 5 \n");
 
   printf("Your choice: ");                 //number of players (1)
-
+  int randomNum;
   int players ;                            //for (1)
   scanf("%d", &players) ;
 
@@ -24,11 +24,12 @@ void multi_play()                                          //multi_play function
     printf("Type in the number %d player's name: ", i+1);
     scanf("%s",&player_name[i]) ;  
   }
-  mpstart:
-  int randomNum = rand() % 6;                             //ran number created is from 0 to 5(6 in total)
-      
-      //printf("The radnum is: %d\n", randomNum);                //check code for dev only
-      
+  int again=1;                                           // initialize the value to start the game
+  while(again == 1)
+  {
+  //mpstart:
+  randomNum = rand() % 6;                             //ran number created is from 0 to 5(6 in total)    
+      printf("The radnum is: %d\n", randomNum);                //check code for dev only 
       int temp_player = 0;                                        //variable for displaying player's name
       int eliminated_player;                                    //variable for eliminated player
 
@@ -45,21 +46,29 @@ void multi_play()                                          //multi_play function
         if (i - 1 == randomNum)
         {
           printf("\tYOU DIED\n\t-------- \n\n Player %s has been eliminated!\n The others players wins\n", player_name[eliminated_player]);
-          printf("\nEnter 1 to continue, any other number to return to main menu: ");    
+          printf("\nEnter 1 to continue, any other number to return to main menu: ");
+          scanf("%d", &again);    
+            /********************************  
               int again;
               scanf("%d", &again);
             
               switch (again)
               {
-                case 1: goto mpstart;
-                default: printf("\nGG\n\n"); break;
+                case 1: 
+                goto mpstart;
+
+                default: 
+                printf("\nGG\n\n"); 
+                break;
               
               }
-              
-          break;                                              //basicly the whole function
+            ********************************/
+          if(again != 1)     
+            break;                                              //basicly the whole function
         }
         printf("Still alive eh? \n");
       }
+  }
 
 }
 
@@ -137,10 +146,12 @@ int main()
   return 0;
 
 }
-//(1/12/2022)mm/dd//yyyy
-//last editor: SocialCreditFarmer420 (Arcahv)
+//(1/13/2022)mm/dd//yyyy
+//last editor: SFMSupersanta (Arcahv)
 /*
-Todo: -And more lines to print when player is alive
+Todo: -Add retry to single-player funtion
+      -Fix multiplayer funtion where there is 2 players
+      -And more lines to print when player is alive
       -Multiplayer loop. Entering names each play is annoying as fuck
 Changelog: makes code a bit easier to read
 */
