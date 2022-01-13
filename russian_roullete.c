@@ -24,7 +24,7 @@ void multi_play()                                          //multi_play function
 while (players==1)
 {
 scanf("%d", &players) ;
-if (players<=5)                         //enter player's name 
+if (players<=5 && players!=1)                         //enter player's name 
   { 
   for(int i = 0; i < players; i++)
   {
@@ -33,7 +33,7 @@ if (players<=5)                         //enter player's name
   }
   } else 
     {
-        printf("No more than 5 people allowed, please enter a valid number if you want to take the challenge:\nYour choice: ");
+        printf("At least 2 people must join and no more than 5 people allowed, please enter a valid number if you want to take the challenge:\nYour choice: ");
         players=1;
     }  
 }
