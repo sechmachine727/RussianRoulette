@@ -177,8 +177,8 @@ int main()
 //(1/13/2022)mm/dd//yyyy
 //last editor: SFMSupersanta (Arcahv)
 /*
-Todo: -And more lines to print when player is alive
-DONE: -Fix multiplayer funtion where there is 2 players
+Todo: -Add more lines to print when player is alive
+DONE: -Fix multiplayer function where there is 2 players
       -Multiplayer loop. Entering names each play is annoying as fuck
       -Add retry to single-player function
 Changelog: makes code a bit easier to read
