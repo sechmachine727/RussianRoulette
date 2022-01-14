@@ -29,7 +29,8 @@ if (players<=5 && players!=1)                         //enter player's name
   for(int i = 0; i < players; i++)
   {
     printf("Type in the number %d player's name: ", i+1);
-    scanf("%s",&player_name[i]) ;  
+    
+    scanf(" %[^\n]s",&player_name[i]) ;  
   }
   } else 
     {
@@ -177,8 +178,7 @@ int main()
 //(1/13/2022)mm/dd//yyyy
 //last editor: SFMSupersanta (Arcahv)
 /*
-Todo: -Add more lines to print when player is alive
-      -fetch "space" in multiplayer name.
+TODO: -Add more lines to print when player is alive
 DONE: -Fix multiplayer function where there is 2 players
       -Multiplayer loop. Entering names each play is annoying as fuck
       -Add retry to single-player function
