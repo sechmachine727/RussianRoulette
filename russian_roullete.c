@@ -97,7 +97,7 @@ void play_single()                                        //single-play function
     {  
       for(int i = 1; i <= 6; i++) 
       {
-        printf(" Turn %d \nPress ENTER to test your lucks!\n", i);
+        printf(" Turn %d \nPress ENTER to test your luck!\n", i);
         _getch();                                             //pause program until the user press a button
         
         if (i - 1 == randomNum)
