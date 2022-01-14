@@ -30,7 +30,7 @@ if (players<=5 && players>=1)                         //enter player's name
   { 
   for(int i = 0; i < players; i++)
   {
-    printf("Type in the #%d player's name: ", i+1);
+    printf("Type in #%d player's name: ", i+1);
     
     scanf(" %[^\n]",&TempString) ; 
     player_name[i] = strdup(TempString); 
