@@ -10,6 +10,7 @@ version 2.2
 #include<time.h>
 #include <conio.h>
 #include <ctype.h>
+#include <string.h>
 
 void multi_play()                                          //multi_play function
 {
@@ -19,22 +20,24 @@ void multi_play()                                          //multi_play function
 
   int randomNum;
   int players =1;
-  char player_name[4][255];
+  char TempString[255];
+  char *player_name[4];
 
 while (players==1)
 {
 scanf("%d", &players) ;
-if (players<=5 && players!=1)                         //enter player's name 
+if (players<=5 && players>=1)                         //enter player's name 
   { 
   for(int i = 0; i < players; i++)
   {
-    printf("Type in the number %d player's name: ", i+1);
+    printf("Type in the #%d player's name: ", i+1);
     
-    scanf(" %[^\n]s",&player_name[i]) ;  
+    scanf(" %[^\n]",&TempString) ; 
+    player_name[i] = strdup(TempString); 
   }
   } else 
     {
-        printf("At least 2 people must join and no more than 5 people allowed, please enter a valid number if you want to take the challenge:\nYour choice: ");
+        printf("At least 2 or more people must join and no more than 5 people allowed, please enter a valid number if you want to take the challenge:\nYour choice: ");
         players=1;
     }  
 }
