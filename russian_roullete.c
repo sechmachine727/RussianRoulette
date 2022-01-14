@@ -178,6 +178,7 @@ int main()
 //last editor: SFMSupersanta (Arcahv)
 /*
 Todo: -Add more lines to print when player is alive
+      -fetch "space" in multiplayer name.
 DONE: -Fix multiplayer function where there is 2 players
       -Multiplayer loop. Entering names each play is annoying as fuck
       -Add retry to single-player function
