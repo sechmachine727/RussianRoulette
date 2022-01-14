@@ -2,7 +2,7 @@
 (▀̿Ĺ̯▀̿ ̿)
 Referring code made by SFMSupersanta, my friend Arcahv and SonBEO1907
 Program:RUSSIAN ROULETTE THE GAME
-version 2.1
+version 2.2
 ****************************************************************/
 
 #include<stdio.h>

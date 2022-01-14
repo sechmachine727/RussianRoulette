@@ -13,3 +13,4 @@ V2.2:
 
 - Unlimited players fixed.
 - Added option to retry in single_player.
+- Get a line when entering player's name.
