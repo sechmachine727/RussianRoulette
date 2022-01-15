@@ -2,7 +2,7 @@
 (▀̿Ĺ̯▀̿ ̿)
 Referring code made by SFMSupersanta, my friend Arcahv and SonBEO1907
 Program:RUSSIAN ROULETTE THE GAME
-version 2.2
+version 3.0
 ****************************************************************/
 
 #include<stdio.h>
@@ -11,6 +11,28 @@ version 2.2
 #include <conio.h>
 #include <ctype.h>
 #include <string.h>
+
+void alive_dialogue()
+{
+  char *string[10];
+  string[0] = "You are still alive? Next shot will be diferent.";
+  string[1] = "Your being alive is a waste of oxygen. I hope the next shot will erase your existance.";
+  string[2] = "Your useless life depends on your next shot.";
+  string[3] = "Nobody loves you, so it's time to die in loneliness. Take the next shot.";
+  string[4] = "Nikocado Avocado is waiting for you in his own hell. Come to him by taking the next shot.";
+  string[5] = "Come on come on cupcake, EDP445 is waiting to meet you in hell.";
+  string[6] = "Others are waiting for you to die. Be a good motherfucker and die , onegai nee~";
+  string[7] = "May the RNGesus be with you, but he doesn't exist so please die next time.";
+  string[8] = "Which hurts more? Shooting in the head or your tight fuckable dickhole? Try that next time.";
+  string[9] = "Suck that big fat juicy gun barrel and die.";
+  string[10] = "Have you experienced isekai? Time to try!";
+
+
+  srand(time(NULL)); 
+  int rannum = rand()%10;
+  printf("%s",string [rannum]);
+  return;
+}
 
 void multi_play()                                          //multi_play function
 {
@@ -77,7 +99,10 @@ if (players<=5 && players>1)                              //enter player's name
                                                     
         }
 
-        printf("Still alive eh? \n");
+        printf("\n");
+        alive_dialogue();
+        printf("\n") ;
+        printf("\n") ;
          
       }
 
@@ -103,12 +128,12 @@ void play_single()                                        //single-play function
       if (i - 1 == randomNum)
       {
 
-        printf("\tYOU DIED\n\t-------- \n\nYou have survied %d times this day!", i);
+        printf("\tYOU DIED\n\t-------- \n\nYou have survied %d times this day! ", i);
 
         if(i <= 5) 
             {
 
-            printf("your luck sucks, go do sth good then try again\n");
+            printf("Your luck sucks, go do sth good then try again\n");
             printf("\nEnter 1 to continue, any other number to return to main menu: ");
             scanf("%d",&reset);
 
@@ -124,7 +149,10 @@ void play_single()                                        //single-play function
         break; 
                                                      //basicly the whole function
       }
-      printf("Still alive eh? \n");
+        printf("\n");
+        alive_dialogue();
+        printf("\n") ;
+        printf("\n") ;
 
     }
 
@@ -134,7 +162,7 @@ void play_single()                                        //single-play function
 
 void russianroulette()
 {
-  printf("Single-player: Type 1  multi-player: Type 0\nYour choice: ");
+  printf("Single-player: Type 1  Multi-player: Type 2\nYour choice: ");
   
   int game;
   scanf("%d", &game);
@@ -146,7 +174,7 @@ void russianroulette()
       play_single();
       break;
     
-    case 0:
+    case 2:
       multi_play();
     break;
 
@@ -173,7 +201,7 @@ int main()
       case 0:
       {
 
-        printf("GTFO you weak ass mf \n");
+        printf("If you are scared, come back to your mama and cry harder you little bitch\n");
         break;  
 
       }  
@@ -198,13 +226,13 @@ int main()
   return 0;
 
 }
-//(1/13/2022)mm/dd//yyyy
-//last editor: SFMSupersanta (Arcahv)
+
+//last editor: Arcahv
 /*
-TODO: -Add more lines to print when player is alive
 DONE: -Fix multiplayer function where there is 2 players
       -Multiplayer loop. Entering names each play is annoying as fuck
       -Add retry to single-player function
+      -Add more lines to print when player is alive
 Changelog: makes code a bit easier to read
            re organized code to better understand how it works
 */
