@@ -113,13 +113,14 @@ if (players<=5 && players>1)                              //enter player's name
 void play_single()                                        //single-play function
 {
 
-  int randomNum = rand() % 6;                             //ran number created is from 0 to 5(6 in total)
+  
   // printf("The radnum is: %d\n", randomNum);                //check code for dev only
   int reset=1;
 
   while (reset==1)
   { 
 
+    int randomNum = rand() % 6;                             //ran number created is from 0 to 5(6 in total)
     for(int i = 1; i <= 6; i++) 
     {
       printf(" Turn %d \nPress ENTER to test your luck!\n", i);
@@ -130,7 +131,7 @@ void play_single()                                        //single-play function
 
         printf("\tYOU DIED\n\t-------- \n\nYou have survied %d times this day! ", i);
 
-        if(i <= 5) 
+        if(i < 5) 
             {
 
             printf("Your luck sucks, go do sth good then try again\n");
@@ -138,7 +139,7 @@ void play_single()                                        //single-play function
             scanf("%d",&reset);
 
             }  
-        else if(i > 5)
+        else if(i >= 5)
             { 
 
             printf("CONGRATULATIONS, YOU WON.");
