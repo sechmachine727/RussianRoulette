@@ -26,7 +26,7 @@ void multi_play()                                          //multi_play function
 while (players==1)
 {
 scanf("%d", &players) ;
-if (players<=5 && players>=1)                         //enter player's name 
+if (players<=5 && players>1)                         //enter player's name 
   { 
   for(int i = 0; i < players; i++)
   {
