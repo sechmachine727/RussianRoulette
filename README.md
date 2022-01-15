@@ -15,7 +15,7 @@ V2.2:
 - Added option to retry in single_player.
 - Get a line when entering player's name.
 
-V3.0: The Definitive Edition
+V3.0: The Definitive Edition:
 
--Fixed some typos
--Added dialogues (R16 so be careful)
+- Fixed some typos
+- Added dialogues (R16 so be careful)
