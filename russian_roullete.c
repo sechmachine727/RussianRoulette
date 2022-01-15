@@ -2,7 +2,7 @@
 (▀̿Ĺ̯▀̿ ̿)
 Referring code made by SFMSupersanta, my friend Arcahv and SonBEO1907
 Program:RUSSIAN ROULETTE THE GAME
-version 3.0
+version 3.1
 ****************************************************************/
 
 #include<stdio.h>
@@ -121,39 +121,47 @@ void play_single()                                        //single-play function
   { 
 
     int randomNum = rand() % 6;                             //ran number created is from 0 to 5(6 in total)
-    for(int i = 1; i <= 6; i++) 
+    for(int i = 0; i <= 5; i++) 
     {
-      printf(" Turn %d \nPress ENTER to test your luck!\n", i);
-      _getch();                                             //pause program until the user press a button
+              
+      printf(" Turn %d \nPress ENTER to test your luck!\n", i+1);
       
-      if (i - 1 == randomNum)
-      {
+      if(i == 4 && i != randomNum)
+        { 
+        printf("\nCONGRATULATIONS, YOU WON.\nYou have survied 5 times this day!\nRenember this as your luckiest day.\n");
+        printf("\nEnter 1 to continue, any other number to return to main menu: ");
+        scanf("%d",&reset);
+        break;
+        }
 
-        printf("\tYOU DIED\n\t-------- \n\nYou have survied %d times this day! ", i);
+      _getch(); 
+      
+      if (i == randomNum)
+        {
 
-        if(i < 5) 
-            {
+          printf("\tYOU DIED\n\t-------- \n\nYou have survied %d times this day! ", i+1);
 
+          
+          if(i < 4) 
+          {
             printf("Your luck sucks, go do sth good then try again\n");
             printf("\nEnter 1 to continue, any other number to return to main menu: ");
             scanf("%d",&reset);
-
-            }  
-        else if(i >= 5)
-            { 
-
-            printf("CONGRATULATIONS, YOU WON.");
+          }  
+          if(i == 4)
+          {
+            printf("Almost there, just a tiny bit more you win but sadly, RNGesus doesn't exist.\n");
             printf("\nEnter 1 to continue, any other number to return to main menu: ");
             scanf("%d",&reset);
-
-            }
-        break; 
-                                                     //basicly the whole function
-      }
-        printf("\n");
-        alive_dialogue();
-        printf("\n") ;
-        printf("\n") ;
+          }
+          
+          break; 
+                                                      //basicly the whole function
+        }
+      printf("\n");
+      alive_dialogue();
+      printf("\n") ;
+      printf("\n") ;
 
     }
 
@@ -234,6 +242,7 @@ DONE: -Fix multiplayer function where there is 2 players
       -Multiplayer loop. Entering names each play is annoying as fuck
       -Add retry to single-player function
       -Add more lines to print when player is alive
+      -Fixed bug in single player function
 Changelog: makes code a bit easier to read
            re organized code to better understand how it works
 */

@@ -19,3 +19,6 @@ V3.0: The Definitive Edition:
 
 - Fixed some typos
 - Added dialogues (R16 so be careful)
+
+V3.1:
+- Fixed bug in single_player function, add some functionality to it.
