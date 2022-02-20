@@ -22,3 +22,7 @@ V3.0: The Definitive Edition:
 
 V3.1:
 - Fixed bug in single_player function, add some functionality to it.
+
+v4.0: 
+
+- Added input validation so no more infinite loop.

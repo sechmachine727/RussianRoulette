@@ -12,6 +12,45 @@ version 3.1
 #include <ctype.h>
 #include <string.h>
 
+/* clear empties input buffer */ 
+void clear_buffer (void)
+{
+    char c;
+    while ((c=getchar()) != '\n'&&c!=EOF);
+}
+
+long long GetInt(char msg[], long long min, long long max) 
+{
+     long long value, rc;
+     int keeptrying = 1;
+     char excess;
+
+     do 
+     {
+         printf("%s ", msg);
+         rc = scanf("%lld%c", &value, &excess);
+         if (rc == 0) 
+         {
+             printf("**No input accepted!**\n\n");
+             clear_buffer();
+         } 
+         else if (excess != '\n') 
+         {
+             printf("**Trailing characters!**\n\n"); 
+             clear_buffer();
+         } 
+         else if (value < min || value > max) 
+         {
+             printf("**Out of range!**\n\n");
+         } 
+         else
+             keeptrying = 0;
+         } 
+     while (keeptrying == 1);
+     
+     return value;
+ }
+
 void alive_dialogue()
 {
   char *string[10];
@@ -36,76 +75,52 @@ void alive_dialogue()
 
 void multi_play()                                          //multi_play function
 {
-  printf("2 players: type 2 \t\t3 players: type 3 \t\t4 players: type 4 \t\t5 players: type 5 \n");
-
-  printf("Your choice: ");                                 //number of players (1)
-
+  
   int randomNum;
-  int players =1;
+  int players;
   char TempString[255];                                  //temp string to store a line of string in before dup to player name string
   char *player_name[4];                                  //player name string
 
-while (players==1)                                       //loop to get answer form 2 to 5
-{
-scanf("%d", &players) ;
-if (players<=5 && players>1)                              //enter player's name 
-  { 
+  players= GetInt("2 players: type 2 \t\t3 players: type 3 \t\t4 players: type 4 \t\t5 players: type 5 \nYour choice: ",2,5);
+  
   for(int i = 0; i < players; i++)
-  {
-
+  { 
     printf("Type in #%d player's name: ", i+1);
-    scanf(" %[^\n]",&TempString) ;                        //put space before %[^\n] to get a line of strings
-    player_name[i] = strdup(TempString); 
-
+    gets(TempString);                        //put space before %[^\n] to get a line of strings
+    player_name[i] = strdup(TempString);  
   }
-  } else 
-    {
 
-        printf("At least 2 or more people must join and no more than 5 people allowed, please enter a valid number if you want to take the challenge:\nYour choice: ");  
-        players=1;
-        
-    }  
-}
   int again=1;                                           // initialize the value to start the game
   while(again == 1)
   {
 
-  randomNum = rand() % 6;                             //ran number created is from 0 to 5(6 in total)    
-      //printf("The radnum is: %d\n", randomNum);                //check code for dev only 
-      int temp_player = 0;                                        //variable for displaying player's name
-      int eliminated_player;                                    //variable for eliminated player
-
-      for(int i = 1; i <= 6; i++) 
+    randomNum = rand() % 6;                             //ran number created is from 0 to 5(6 in total)    
+    //printf("The radnum is: %d\n", randomNum);                //check code for dev only 
+    int temp_player = 0;                                        //variable for displaying player's name
+    int eliminated_player;                                    //variable for eliminated player
+    for(int i = 1; i < 5 ; i++) 
+    {
+      printf(" Player %s's Turn \nPress ENTER to test your luck!\n", player_name[temp_player]);
+      eliminated_player = temp_player;
+      
+      temp_player++;
+      if(temp_player >= players) 
+        temp_player = 0;
+      //printf("Press enter to continue!\n");
+      while(getchar()!='\n');
+      if (i - 1 == randomNum)
       {
-
-        printf(" Player %s's Turn \nPress ENTER to test your luck!\n", player_name[temp_player]);
-
-        eliminated_player = temp_player;
-        
-        temp_player++;
-
-        if(temp_player >= players) 
-          temp_player = 0;
-
-        //printf("Press enter to continue!\n");
-        while(getchar()!='\n');
-
-        if (i - 1 == randomNum)
-        {
-
-          printf("\tYOU DIED\n\t-------- \n\n Player %s has been eliminated!\n The others players wins\n", player_name[eliminated_player]);
-          printf("\nEnter 1 to continue, any other number to return to main menu: ");
-          scanf("%d", &again);              
-          break;  
-                                                    
-        }
-
-        printf("\n");
-        alive_dialogue();
-        printf("\n") ;
-        printf("\n") ;
-         
+        printf("\tYOU DIED\n\t-------- \n\n Player %s has been eliminated!\n The others players wins\n", player_name[eliminated_player]);
+        again = GetInt("\nEnter 1 to continue, 0 to return to main menu: ",0,1);   
+        i = 6; 
+                                                  
       }
+      printf("\n");
+      alive_dialogue();
+      printf("\n") ;
+      printf("\n") ;
+       
+    }
 
   }
 
@@ -122,43 +137,35 @@ void play_single()                                        //single-play function
   { 
 
     int randomNum = rand() % 6;                             //ran number created is from 0 to 5(6 in total)
-    for(int i = 0; i <= 5; i++) 
+    for(int i = 0; i < 6; i++) 
     {
               
       printf(" Turn %d \nPress ENTER to test your luck!\n", i+1);
       
       if(i == 4 && i != randomNum)
-        { 
-        printf("\nCONGRATULATIONS, YOU WON.\nYou have survied 5 times this day!\nRenember this as your luckiest day.\n");
-        printf("\nEnter 1 to continue, any other number to return to main menu: ");
-        scanf("%d",&reset);
-        break;
-        }
+      
+      { 
+        reset=GetInt("\nCONGRATULATIONS, YOU WON.\nYou have survied 5 times this day!\nRenember this as your luckiest day.\n\nEnter 1 to continue, 0 to return to main menu: ",0,1);
+        i = 6;
+      }
 
       while(getchar()!='\n'); 
       
       if (i == randomNum)
+      {
+        printf("\tYOU DIED\n\t-------- \n\nYou have survied %d times this day! ", i+1);
+        
+        if(i < 4) 
         {
-
-          printf("\tYOU DIED\n\t-------- \n\nYou have survied %d times this day! ", i+1);
-
-          
-          if(i < 4) 
-          {
-            printf("Your luck sucks, go do sth good then try again\n");
-            printf("\nEnter 1 to continue, any other number to return to main menu: ");
-            scanf("%d",&reset);
-          }  
-          if(i == 4)
-          {
-            printf("Almost there, just a tiny bit more you win but sadly, RNGesus doesn't exist.\n");
-            printf("\nEnter 1 to continue, any other number to return to main menu: ");
-            scanf("%d",&reset);
-          }
-          
-          break; 
-                                                      //basicly the whole function
+          reset =GetInt("Your luck sucks, go do sth good then try again\n\nEnter 1 to continue, 0 to return to main menu: ",0,1);
+        }  
+        if(i == 4)
+        {
+          reset =GetInt("Almost there, just a tiny bit more you win but sadly, RNGesus doesn't exist.\n\nEnter 1 to continue, 0 to return to main menu: ",0,1);
         }
+        
+        i = 6;
+      }
       printf("\n");
       alive_dialogue();
       printf("\n") ;
@@ -172,10 +179,8 @@ void play_single()                                        //single-play function
 
 void russianroulette()
 {
-  printf("Single-player: Type 1  Multi-player: Type 2\nYour choice: ");
   
-  int game;
-  scanf("%d", &game);
+  int game=GetInt("Single-player: Type 1  Multi-player: Type 2\nYour choice: ",1,2);
   
   switch(game)
   {
@@ -201,9 +206,7 @@ int main()
   
   do                                                    //do-while loop
   {
-
-    printf("\n\n\t----------------------------------------------------\n\tEnter 1 to try your luck, Enter 0 if you are a wimp: ");
-    scanf("%d", &input);
+    input = GetInt("\n\n\t----------------------------------------------------\n\tEnter 1 to try your luck, Enter 0 if you are a wimp: ",0,1); 
     printf("\n\n");
 
     switch(input)
@@ -224,7 +227,6 @@ int main()
       }
 
     }
-
   }
 
   while(input!=0);
@@ -232,7 +234,6 @@ int main()
   printf("Press ENTER to get tf outta here");
   while(getchar()!='\n');                                           //pause program until the user press a button
 
-  
   return 0;
 
 }
@@ -244,6 +245,8 @@ DONE: -Fix multiplayer function where there is 2 players
       -Add retry to single-player function
       -Add more lines to print when player is alive
       -Fixed bug in single player function
-Changelog: makes code a bit easier to read
+Changelog: added input validation
+           remove conio.h lib
+           makes code a bit easier to read
            re organized code to better understand how it works
 */
