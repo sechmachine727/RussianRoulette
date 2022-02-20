@@ -86,7 +86,7 @@ void multi_play()                                          //multi_play function
   for(int i = 0; i < players; i++)
   { 
     printf("Type in #%d player's name: ", i+1);
-    gets(TempString);                        //put space before %[^\n] to get a line of strings
+    fgets(TempString,255,stdin);                        //put space before %[^\n] to get a line of strings
     player_name[i] = strdup(TempString);  
   }
 
