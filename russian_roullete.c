@@ -8,7 +8,7 @@ version 3.1
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
-#include <conio.h>
+//#include <conio.h>
 #include <ctype.h>
 #include <string.h>
 
@@ -87,7 +87,8 @@ if (players<=5 && players>1)                              //enter player's name
         if(temp_player >= players) 
           temp_player = 0;
 
-          _getch();                                             //pause program until the user press a button
+        //printf("Press enter to continue!\n");
+        while(getchar()!='\n');
 
         if (i - 1 == randomNum)
         {
@@ -134,7 +135,7 @@ void play_single()                                        //single-play function
         break;
         }
 
-      _getch(); 
+      while(getchar()!='\n'); 
       
       if (i == randomNum)
         {
@@ -229,7 +230,7 @@ int main()
   while(input!=0);
 
   printf("Press ENTER to get tf outta here");
-  _getch();                                             //pause program until the user press a button
+  while(getchar()!='\n');                                           //pause program until the user press a button
 
   
   return 0;
