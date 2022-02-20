@@ -79,15 +79,22 @@ void multi_play()                                          //multi_play function
   int randomNum;
   int players;
   char TempString[255];                                  //temp string to store a line of string in before dup to player name string
-  char *player_name[4];                                  //player name string
+  char player_name[4][255];                                  //player name string
 
   players= GetInt("2 players: type 2 \t\t3 players: type 3 \t\t4 players: type 4 \t\t5 players: type 5 \nYour choice: ",2,5);
   
   for(int i = 0; i < players; i++)
   { 
     printf("Type in #%d player's name: ", i+1);
-    fgets(TempString,255,stdin);                        //put space before %[^\n] to get a line of strings
-    player_name[i] = strdup(TempString);  
+    fgets(TempString,255,stdin);                     //fgets(str[],int size,streamtaken)
+
+    int cnt=0;
+    while(TempString[cnt]!='\0')
+    {
+      player_name[i][cnt]=TempString[cnt];
+      cnt ++;
+    }
+    player_name[i][cnt-1]= '\0';
   }
 
   int again=1;                                           // initialize the value to start the game
